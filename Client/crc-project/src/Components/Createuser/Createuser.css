@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',Arial, sans-serif;
+  }
+ 
+    
+ 
+  .acc-body .card.opencard .collapse {
+    display: block;
+    height: 260px;
+    overflow-y: scroll;
+    padding: 20px;
+    width: 80%;
+}
+
+
+@media only screen and (max-width: 600px)
+ {
+  .acc-body .card.opencard .collapse {
+    width: 100%;
+  }
+ }

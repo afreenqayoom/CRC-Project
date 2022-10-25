@@ -1,0 +1,45 @@
+
+.history-toolbox{
+    position: absolute;
+    top: calc(50% - 50px);
+    left: -50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px 0px 0px 50px;
+    background:#7d2ae8;
+
+}
+.history-toolbox-container{
+   position: fixed;
+   top: 0px;
+   right: -50%;
+    width: 50%;
+    transition: right 0.5s linear;
+    height: 100vh;
+}
+.history-toolbox-container.open{
+    right: 0;
+  }
+.Physiotherapy-Container{
+    width: 100%;
+    min-height: 100vh;
+}
+.history-toolbox-span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    font-size: 25px;
+  }
+  .row.smallrow{
+    justify-content: space-between;
+    margin-top: 30px;
+}
+  @media screen and (min-width:0px) and (max-width:600px){
+  .history-toolbox-container {
+    width: 85%;
+    right: -85%;
+  }
+}

@@ -1,0 +1,87 @@
+.Conditiontitle{
+    font-size: 16px;
+    color: #7d2ae8;
+    margin: 10px;
+}
+.listBody{
+    padding: 10px;
+    height: 350px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.list{
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px #989898;
+    display: flex;
+    flex-direction: column;
+}
+.list h2{
+    background-color: #7d2ae8;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: 600;
+
+}
+.list ul{
+    position: relative;
+    padding: 10px;
+}
+.list ul li{
+    position: relative;
+    list-style: none;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-left: 20px;
+
+}
+.list ul li:last-child{
+    border-bottom: none;
+}
+
+.list ul li label{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.list ul li label input{
+    visibility: hidden;
+    appearance: none;
+}
+.list ul li label p{
+    position: absolute;
+}
+.list ul li label span{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list ul li label span::before{
+    content: '';
+    position: absolute;
+    top: 5px;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    transform: rotate(-40deg);
+}
+
+.list ul li label input:checked ~span{
+    background-color: #03a9f4;
+    border: 1px solid #03a9f4;
+    color: #fff;
+}
+.list ul li label input:checked ~span~::before{
+    border-left: 2px solid #fff;
+    border-bottom: #fff;
+}

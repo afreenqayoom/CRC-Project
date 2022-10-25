@@ -1,0 +1,30 @@
+<service>
+	<id>crcserver.exe</id>
+	<name>CRCSERVER</name>
+	<description>CRC SERVER</description>
+	<executable>C:\Program Files\nodejs\node.exe</executable>
+	<argument>C:\React Projects\CRC-project\Server\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>--file</argument>
+	<argument>C:\React Projects\CRC-project\Server\Server.js</argument>
+	<argument>--scriptoptions=</argument>
+	<argument>--log</argument>
+	<argument>CRCSERVER wrapper</argument>
+	<argument>--grow</argument>
+	<argument>0.25</argument>
+	<argument>--wait</argument>
+	<argument>1</argument>
+	<argument>--maxrestarts</argument>
+	<argument>3</argument>
+	<argument>--abortonerror</argument>
+	<argument>n</argument>
+	<argument>--stopparentfirst</argument>
+	<argument>false</argument>
+	<logmode>rotate</logmode>
+	<stoptimeout>30sec</stoptimeout>
+	<serviceaccount>
+		<domain>INSHAFREEN</domain>
+		<user>LocalSystem</user>
+		<password></password>
+	</serviceaccount>
+	<workingdirectory>C:\React Projects\CRC-project\Server</workingdirectory>
+</service>

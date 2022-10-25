@@ -1,0 +1,120 @@
+.widgetcont {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-content: center;   
+    
+}
+
+.cardwidget{
+    display: flex;
+    flex-basis: 23%;
+    
+
+}
+.chartwidget{
+    display: flex;
+    flex-basis: 32%;
+    
+}
+
+.tablewidget{
+  display: flex;
+  flex-basis: 45%;
+  
+} 
+ .mydash{
+   min-width:100%;
+   display:flex;
+   flex-direction: column;
+
+}
+.content{
+    display: flex;
+    flex-direction: row;
+}
+.sidebarwidget{
+/* position: absolute;
+top:10px;
+left:6px; */
+max-width:100%;
+margin-left:10px;
+display: none;
+}
+.openside{
+    display: block;
+}
+.dashcont{
+    position: relative;
+    padding: 5px;
+    /* left:84px;
+    top:5px; */
+    padding-top: 0px;
+    width:100%;
+  
+} 
+
+@media(min-width:1264px){
+    .sidebarwidget{
+        display: block;
+
+        
+    }
+    .cardwidget{
+        flex-basis: 23%;
+        max-width: 23%;
+    }
+    .chartwidget{
+        flex-basis: 32%;
+        max-width: 32%;
+    }
+    .tablewidget{
+        flex-basis: 45%;
+        max-width: 45%;
+    }
+
+}  
+@media(max-width: 599px){
+    .sidebarwidget{
+        position: absolute;
+    
+        top:40px;
+    }
+   
+    .dashcont{
+        left:0px;
+        width:100%;
+      
+    } 
+    .cardwidget,.chartwidget,.tablewidget{
+        flex-basis: 100%;
+         margin-bottom: 40px;
+    }
+    
+    .widgetcont{
+        flex-direction: column;
+      
+    }
+  }
+
+@media(min-width:600px){
+    .sidebarwidget{
+        display: block;
+    }
+    .cardwidget,.chartwidget,.tablewidget{
+        
+        margin-bottom: 40px;
+   }
+   .cardwidget{
+       flex-basis:48%; 
+       width: 48%;
+   }
+   
+    .chartwidget,.tablewidget{
+       flex-basis: 100%;
+       width: 100%;
+   } 
+    .widgetcont{
+        flex-wrap: wrap;
+    }
+}

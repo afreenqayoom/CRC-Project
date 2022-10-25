@@ -1,0 +1,204 @@
+/* @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap'); */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+section {
+  position: relative;
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+section .container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  background:#fff;
+  
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.5);
+  
+}
+
+section .container .user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+}
+
+section .container .user .imgBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  
+  transition: all 0.5s ease;
+}
+
+section .container .user .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+section .container .user .formBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background:#fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transition: 0.5s;
+}
+
+section .container .user .formBx h2 {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #8a8a85;
+  position: relative;
+}
+section .container .user .formBx h2::before{
+content: '';
+position: absolute;
+left: 30;
+bottom: 0;
+height: 3px;
+width: 25px;
+background: #7d2ae8;
+}
+
+
+
+
+section .container .user .formBx .forgot {
+  position: relative;
+  margin: 10px 0 0 0;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: rgb(29, 27, 27);
+  text-transform: uppercase;
+  font-weight: 450;
+
+}
+
+
+section .container .user .formBx .forgot a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #7d2ae8;
+}
+section .container .user .formBx .forgot a:hover
+{
+  text-decoration: underline;
+}
+.setnew{
+  
+  display: none;
+  width: 100%;
+}
+.opensetnew
+{
+  display: flex;
+  flex-direction: column;
+}
+.reset{
+  
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.closereset
+{
+  display: none;
+}
+
+/*  */
+.error{
+  margin-top: 2px;
+  color:red;
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+}
+section .container .forgotBx {
+  pointer-events: none;
+}
+
+section .container.active .forgotBx {
+  pointer-events: initial;
+}
+
+section .container .forgotBx .formBx {
+  left: 100%;
+}
+
+section .container.active .forgotBx .formBx {
+  left: 0;
+}
+
+section .container .forgotBx .imgBx {
+  left: -100%;
+}
+
+section .container.active .forgotBx .imgBx {
+  left: 0%;
+}
+
+section .container .signinBx .formBx {
+  left: 0%;
+}
+
+section .container.active .signinBx .formBx {
+  left: 100%;
+}
+
+section .container .signinBx .imgBx {
+  left: 0%;
+}
+
+section .container.active .signinBx .imgBx {
+  left: -100%;
+}
+
+@media (max-width: 780px) {
+  section .container {
+    max-width: 400px;
+  }
+  section{
+    background : url('login.jpg') scroll 0%;
+    background-size: cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+  section .container .imgBx {
+    display: none;
+  }
+
+  section .container .user .formBx {
+    width: 100%;
+  }
+}
