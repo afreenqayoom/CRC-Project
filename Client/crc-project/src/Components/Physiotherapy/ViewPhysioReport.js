@@ -70,7 +70,8 @@ export default function ViewReciept() {
         { accessorKey: 'Address', header: 'Address',size:50},
         { accessorKey: 'Phone_Number', header: 'Phone Number' ,size:50},
         {
-            accessorKey: 'Condition_Type', header: 'Condition Type',size:50
+            accessorKey: 'Condition_Type', header: 'Condition Type',size:50,filterVariant: 'select',
+            filterSelectOptions: ["Orthopedic","Neurological"]
         },
         { accessorKey: 'Clinical_Conditions', header: 'Provisional Diagnosis',size:50},
         { accessorKey: 'Treatments', header: 'Treatments',size:50},
