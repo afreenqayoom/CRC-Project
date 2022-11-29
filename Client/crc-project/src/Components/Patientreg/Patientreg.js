@@ -7,22 +7,22 @@ import { useFormik } from 'formik';
 import axios from '../../axios';
 import * as FaIcons from 'react-icons/fa';
 import RegisterPrint from '../Printing/RegisterPrint';
-import {useRef} from 'react';
+import { useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import {
     submitAction
-  } from '../Redux/action';
-  import { connect } from 'react-redux';
+} from '../Redux/action';
+import { connect } from 'react-redux';
 
- function Patientreg(props) {
-    const componentRef=useRef();
+function Patientreg(props) {
+    const componentRef = useRef();
     var disabilityv, disabilityPartsv, rehabv;
     const current = new Date();
     const formatDate = current.getDate() < 10 ? `0${current.getDate()}` : current.getDate();
@@ -31,25 +31,25 @@ import {
     const [card1, showcard1] = useState(true);
     const [card2, showcard2] = useState(false);
     const [regcomp, setregcomp] = useState();
-    const [editcomp,seteditcomp]=useState();
-    const [ptypecomp,setptypecomp]=useState();
+    const [editcomp, seteditcomp] = useState();
+    const [ptypecomp, setptypecomp] = useState();
     const [isfollowup, setfollowup] = useState(false);
-    const [isedit,setedit]=useState(false);
-   
-    const [open,setopen]=useState(false);
-    const [type,setType]=useState(0);
-    const showToast=((msg,type) => {
-        if (type===0){
-          toast.error(msg, {
-            position: "top-center", autoClose: 2000
-          });
-        }else if(type===1){
-          toast.success(msg, {
-            position: "top-center", autoClose: 2000
-          });
+    const [isedit, setedit] = useState(false);
+
+    const [open, setopen] = useState(false);
+    const [type, setType] = useState(0);
+    const showToast = ((msg, type) => {
+        if (type === 0) {
+            toast.error(msg, {
+                position: "top-center", autoClose: 2000
+            });
+        } else if (type === 1) {
+            toast.success(msg, {
+                position: "top-center", autoClose: 2000
+            });
         }
-      });
-    const handleClose=()=>{
+    });
+    const handleClose = () => {
         setopen(false);
     }
 
@@ -65,8 +65,9 @@ import {
                 rid = (response.data[0].Registration_ID) + 1;
 
             setinitialValues({ ...initialValues, regId: rid, ptype: "New Patient" });
-        }).catch((error)=>{
-            showToast(error.message,0);})
+        }).catch((error) => {
+            showToast(error.message, 0);
+        })
 
     }
     const clearregId = () => {
@@ -118,31 +119,43 @@ import {
             DISABILITY_PARTS: disabilityPartsv,
             REHAB: rehabv,
             FOLLOWUP: isfollowup,
-            EDIT:isedit
+            EDIT: isedit
 
         }).then((response) => {
 
-            if (response.data === 0) {
-                  
+            console.log("R", response.data);
+            if (response.data === -1) {
 
-            }
-            else if(response.data===-1)
-            {
-               
-                showToast("Details Updated Successfuly!!",1);
+                showToast("Details Updated Successfuly!!", 1);
                 setopen(true);
             }
-            else if(response.data===-2)
-            showToast("No such record to be edited..",0);
-            else {
-                showToast("Registration Successfull!!",1);
+            else if (response.data === -2)
+                showToast("No such record to be edited..", 0);
+            else if (response.data === 3)
+                showToast("Patient already registered for today.", 0);
+            else if (response.data === 1) {
+                showToast("Registration Successfull!!", 1);
+
                 setopen(true);
                 formik.resetForm();
             }
-           
-        }).catch((error)=>{
-            showToast(error.message,0);
-            })
+            // else{
+            // showToast(response.data['code'],0)
+            // console.log(response);
+            // getregId();
+            // }
+            getregId();
+        }).catch((error) => {
+            if (error.response)
+                showToast(error.response.data["message"], 0);
+
+            else
+                showToast(error.message, 0);
+
+
+            getregId();
+            // showToast(error.message,0);
+        })
 
     };
 
@@ -187,16 +200,16 @@ import {
         disabilityPartsv = values.disabilityParts.toString();
         rehabv = values.rehab.toString();
         console.log("Form values", values);
-       console.log("r",rehab);
+        console.log("r", rehab);
         patientregister();
         getregId();
         regcomp.disabled = "true";
-        editcomp.checked=false;
-        ptypecomp.disabled="";
+        editcomp.checked = false;
+        ptypecomp.disabled = "";
         setfollowup(false);
         setedit(false);
         getregId();
-       
+
     }
     const validate = values => {
         let errors = {};
@@ -226,12 +239,11 @@ import {
             values.totaldisabled = 0;
         else if (isNaN(values.totaldisabled))
             errors.totaldisabled = "Invalid Total Disabled No.";
-        if(!isedit)
-        {
-        if (!values.refDept || values.refDept==="Select Department") {
-            errors.refDept = "Required"
+        if (!isedit) {
+            if (!values.refDept || values.refDept === "Select Department") {
+                errors.refDept = "Required"
+            }
         }
-    }
 
         return errors;
     }
@@ -249,29 +261,29 @@ import {
         parentage,
         category,
         address,
-       district,
+        district,
         age,
         gender,
         phno,
         qualification,
         religion,
-       caste,
+        caste,
         martial,
-       martialchange,
+        martialchange,
         occupation,
         occupationchange,
         familyoccupation,
         income,
         incomechange,
-       disabilitycause,
-       disabilitytype,
-       familydisabled,
-       totalfamily,
-       totaldisabled,
-       disability,
-      disabilityParts,
+        disabilitycause,
+        disabilitytype,
+        familydisabled,
+        totalfamily,
+        totaldisabled,
+        disability,
+        disabilityParts,
         rehab
-     ,submitAction}=props;
+        , submitAction } = props;
     return (
 
         <section className="createcont">
@@ -287,13 +299,13 @@ import {
                             <div className="card-header" onClick={togglecard1}>
                                 <button type="button">Patient Details</button>
                                 <div className="icon">
-                                {card1 ? <FaIcons.FaMinus/> :<FaIcons.FaPlus/>}
+                                    {card1 ? <FaIcons.FaMinus /> : <FaIcons.FaPlus />}
                                 </div>
                             </div>
                             <div className="collapse-reg" id="collapse1">
                                 <div className="card-content">
 
-                                    <Register value={formik.values} onChangeValue={formik.handleChange} formobj={formik} clearregId={clearregId} getregId={getregId} setregcomp={setregcomp} seteditcomp={seteditcomp} setptypecomp={setptypecomp} setfollowup={setfollowup} setedit={setedit}/>
+                                    <Register value={formik.values} onChangeValue={formik.handleChange} formobj={formik} clearregId={clearregId} getregId={getregId} setregcomp={setregcomp} seteditcomp={seteditcomp} setptypecomp={setptypecomp} setfollowup={setfollowup} setedit={setedit} />
 
                                 </div>
                             </div>
@@ -303,7 +315,7 @@ import {
                             <div className="card-header" onClick={togglecard2}>
                                 <button type="button">Add-On Details</button>
                                 <div className="icon">
-                                {card2 ? <FaIcons.FaMinus/> :<FaIcons.FaPlus/>}
+                                    {card2 ? <FaIcons.FaMinus /> : <FaIcons.FaPlus />}
                                 </div>
                             </div>
                             <div className="collapse-reg" id="collapse2">
@@ -316,99 +328,100 @@ import {
                 </div>
 
                 <button type="submit" className="btn" form="patient" style={{ width: "150px", margin: '10px 0 40px 0' }}>Save</button>
-               
-               
-                    {/* <ReactToPrint
+
+
+                {/* <ReactToPrint
                         trigger={() => <i className="btn" style={{fontSize:"24px", width:"40px"}}><FaIcons.FaPrint /></i>}
                         content={() => componentRef.current}
                         documentTitle={"PatientRegister"}
                     /> */}
-            <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Print</DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Do you want to Print ?
+                <Dialog open={open} onClose={handleClose} style={{maxWidth:"400px",margin:"auto"}}>
+                    <DialogTitle>Print</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Do you want to Print ?
                 </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <button className="btn" onClick={handleClose}>Cancel</button>
-                <ReactToPrint
-                        trigger={() => <button className="btn" autofocus>Print</button>}
-                        content={() => componentRef.current}
-                        documentTitle={"Patient Register"}
-                    />
-            </DialogActions>
-            </Dialog>
-                <div className="Print" style={{height:"0px",visibility:"hidden"}}>
-                
-                {/* <RegisterPrint value={value} ref={componentRef}/></div> */}
-                <RegisterPrint regId={regId} regDate={regDate} pname={pname}
-        parentage={parentage}
-        category={category}
-        address={address}
-       district={district}
-        age={age}
-        gender={gender}
-        phno={phno}
-        qualification={qualification}
-        religion={religion}
-       caste={caste}
-        martial={martial}
-       martialchange={martialchange}
-        occupation={occupation}
-        occupationchange={occupationchange}
-        familyoccupation={familyoccupation}
-        income={income}
-        incomechange={incomechange}
-       disabilitycause={disabilitycause}
-       disabilitytype={disabilitytype}
-       familydisabled={familydisabled}
-       totalfamily={totalfamily}
-       totaldisabled={totaldisabled}
-       disability={disability}
-      disabilityParts={disabilityParts}
-        rehab={rehab} ref={componentRef}/></div>
+                    </DialogContent>
+                    <DialogActions>
+                        <button className="btn" onClick={handleClose}>Cancel</button>
+                        <ReactToPrint
+                            trigger={() => <button className="btn" autofocus>Print</button>}
+                            content={() => componentRef.current}
+                            documentTitle={"Patient Register"}
+                        />
+                    </DialogActions>
+                </Dialog>
+                <div className="Print" style={{ height: "0px", visibility: "hidden" }}>
+
+                    {/* <RegisterPrint value={value} ref={componentRef}/></div> */}
+                    <RegisterPrint regId={regId} regDate={regDate} pname={pname}
+                        parentage={parentage}
+                        category={category}
+                        address={address}
+                        district={district}
+                        age={age}
+                        gender={gender}
+                        phno={phno}
+                        qualification={qualification}
+                        religion={religion}
+                        caste={caste}
+                        martial={martial}
+                        martialchange={martialchange}
+                        occupation={occupation}
+                        occupationchange={occupationchange}
+                        familyoccupation={familyoccupation}
+                        income={income}
+                        incomechange={incomechange}
+                        disabilitycause={disabilitycause}
+                        disabilitytype={disabilitytype}
+                        familydisabled={familydisabled}
+                        totalfamily={totalfamily}
+                        totaldisabled={totaldisabled}
+                        disability={disability}
+                        disabilityParts={disabilityParts}
+                        rehab={rehab} ref={componentRef} /></div>
             </div>
 
         </section>
     );
-    
- }
+
+}
 const mapStateToProps = (state) => ({
 
-   regId:state.regId,
-   regDate:state.regDate,
-   pname:state.pname,
-   parentage:state.parentage,
-   category:state.category,
-   address:state.address,
-   district:state.district,
-   age:state.age,
-   gender:state.gender,
-   phno:state.phno,
-   qualification:state.qualification,
-   religion:state.religion,
-   caste:state.caste,
-   martial:state.martial,
-   martialchange:state.martialchange,
-   occupation:state.occupation,
-   occupationchange:state.occupationchange,
-   familyoccupation:state.familyoccupation,
-   income:state.income,
-   incomechange:state.incomechange,
-   disabilitycause:state.disabilitycause,
-   disabilitytype:state.disabilitytype,
-   familydisabled:state.familydisabled,
-   totalfamily:state.totalfamily,
-   totaldisabled:state.totaldisabled,
-   disability:state.disability,
-   disabilityParts:state.disabilityParts,
-   rehab:state.rehab
+    regId: state.regId,
+    regDate: state.regDate,
+    pname: state.pname,
+    parentage: state.parentage,
+    category: state.category,
+    address: state.address,
+    district: state.district,
+    age: state.age,
+    gender: state.gender,
+    phno: state.phno,
+    qualification: state.qualification,
+    religion: state.religion,
+    caste: state.caste,
+    martial: state.martial,
+    martialchange: state.martialchange,
+    occupation: state.occupation,
+    occupationchange: state.occupationchange,
+    familyoccupation: state.familyoccupation,
+    income: state.income,
+    incomechange: state.incomechange,
+    disabilitycause: state.disabilitycause,
+    disabilitytype: state.disabilitytype,
+    familydisabled: state.familydisabled,
+    totalfamily: state.totalfamily,
+    totaldisabled: state.totaldisabled,
+    disability: state.disability,
+    disabilityParts: state.disabilityParts,
+    rehab: state.rehab
 
 
 
-  });
-  
-  const mapDispatchToProps = (dispatch) => ({
-    submitAction: (data) => dispatch(submitAction(data))})
-    export default connect(mapStateToProps, mapDispatchToProps)(Patientreg);
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    submitAction: (data) => dispatch(submitAction(data))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Patientreg);

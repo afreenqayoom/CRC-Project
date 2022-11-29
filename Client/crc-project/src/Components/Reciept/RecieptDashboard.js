@@ -7,7 +7,7 @@ import { useState } from 'react';
 import axios from '../../axios';
 import { isNull } from 'util';
 import * as FaIcons from 'react-icons/fa';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 const RecieptDashboard = () => {
   const [dailyamount, setdailyamount] = useState();
   const [totaldailyreciept, settotaldailyreciept] = useState();
@@ -32,13 +32,16 @@ const RecieptDashboard = () => {
   const [weekdata, setweekdata] = useState([])
   const [monthdata, setmonthdata] = useState([])
   const [yeardata, setyeardata] = useState([])
-  const [isError,setIsError]=useState("");
+  const [totalregfee,settotalregfee]=useState();
+  const [totalreg,settotalreg]=useState();
+  const [isError, setIsError] = useState("");
   React.useEffect(() => {
-    if(isError!=="")
-        toast.error(isError, {
-            position: "top-center",autoClose: 2000});
-        
-      }, [isError]);
+    if (isError !== "")
+      toast.error(isError, {
+        position: "top-center", autoClose: 2000
+      });
+
+  }, [isError]);
   const getamount = () => {
     let wamt = 0, wreciept = 0;
     let yamt = 0, yreciept = 0;
@@ -59,11 +62,11 @@ const RecieptDashboard = () => {
         setdailyamount('Rs. 0.00');
       else
         setdailyamount('Rs. ' + response.data[0].Charges.toFixed(2));
-      settotaldailyreciept('Total Reciepts-' + response.data[0].Total_Reciepts);
-    }).catch((error)=>{
-      console.log("Error",error);
+      settotaldailyreciept('Total Reciepts - ' + response.data[0].Total_Reciepts);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsError(error.message);
-      })
+    })
     axios.post("getaccountdash/getmonthly", {
 
     }).then((response) => {
@@ -71,11 +74,11 @@ const RecieptDashboard = () => {
         setmonthlyamount('Rs. 0.00');
       else
         setmonthlyamount('Rs. ' + response.data[0].Charges.toFixed(2));
-      settotalmonthlyreciept('Total Reciepts-' + response.data[0].Total_Reciepts);
-    }).catch((error)=>{
-      console.log("Error",error);
+      settotalmonthlyreciept('Total Reciepts - ' + response.data[0].Total_Reciepts);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsError(error.message);
-      })
+    })
     axios.post("getaccountdash/getyearly", {
       YEARFLAG: yearflag
     }).then((response) => {
@@ -83,11 +86,11 @@ const RecieptDashboard = () => {
         setyearlyamount('Rs. 0.00');
       else
         setyearlyamount('Rs. ' + response.data[0].Charges.toFixed(2));
-      settotalyearlyreciept('Total Reciepts-' + response.data[0].Total_Reciepts);
-    }).catch((error)=>{
-      console.log("Error",error);
+      settotalyearlyreciept('Total Reciepts - ' + response.data[0].Total_Reciepts);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsError(error.message);
-      })
+    })
 
     axios.post("getaccountdash/getweekdata", {
 
@@ -100,21 +103,21 @@ const RecieptDashboard = () => {
           wreciept = wreciept + element.Total_Reciepts;
         })
         setweeklyamount('Rs. ' + wamt.toFixed(2));
-        settotalweeklyreciept('Total Reciepts-' + wreciept);
+        settotalweeklyreciept('Total Reciepts - ' + wreciept);
         setweekdata(response.data);
       }
-    }).catch((error)=>{
-      console.log("Error",error);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsError(error.message);
-      })
+    })
     axios.post("getaccountdash/getmonthwisedata", {
       YEARFLAG: yearflag
     }).then((response) => {
       setmonthdata(response.data);
-    }).catch((error)=>{
-      console.log("Error",error);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsError(error.message);
-      })
+    })
     axios.post("getaccountdash/getyearwisedata", {
 
     }).then((response) => {
@@ -127,20 +130,31 @@ const RecieptDashboard = () => {
         })
         setyearwiseamt('Rs. ' + yamt.toFixed(2));
         setyeardata(response.data);
-        setyearwisereciept('Total Reciepts-' + yreciept);
+        setyearwisereciept('Total Reciepts - ' + yreciept);
       }
-    }).catch((error)=>{
-      console.log("Error",error);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsError(error.message);
-      })
+    })
     axios.post("getaccountdash/getpaymentdata", {
     }).then((response) => {
       settabledata(response.data);
-    }).catch((error)=>{
-      console.log("Error",error);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsError(error.message);
-      })
-
+    })
+    axios.post("getaccountdash/gettotalregfee", {
+      YEARFLAG: yearflag
+    }).then((response) => {
+      if (isNull(response.data[0].TotalRegFee))
+        settotalregfee('Rs. 0.00');
+      else
+      settotalregfee('Rs. ' + response.data[0].TotalRegFee.toFixed(2));
+      settotalreg('Total Registrations - ' + response.data[0].TotalRegistrations);
+    }).catch((error) => {
+      console.log("Error", error);
+      setIsError(error.message);
+    })
     // Axios.post("http://CRC-SERVER:3001/getaccountdash/getmonthpayment", {
     // }).then((response) => {
     //   setmonthtable(response.data);
@@ -156,9 +170,10 @@ const RecieptDashboard = () => {
       <div className="content">
         <div className="dashcont">
           <div className="widgetcont">
-            <div className="chartwidget"><Cardwidget bgcolor='#00cae3' headericon={<FaIcons.FaChartBar/>} headertitle='Amount Recieved' headerbody={dailyamount} footer1={date} footer2={totaldailyreciept} /> </div>
-  <div className="chartwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaArchive/>} headertitle='Amount Recieved' headerbody={monthlyamount} footer1={months[current.getMonth()]} footer2={totalmonthlyreciept} /> </div>
-            <div className="chartwidget"><Cardwidget bgcolor='#ff9800' headericon={<FaIcons.FaChartLine/>} headertitle='Amount Recieved' headerbody={yearlyamount} footer1={fyear} footer2={totalyearlyreciept} />  </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#00cae3' headericon={<FaIcons.FaChartBar />} headertitle='Amount Recieved' headerbody={dailyamount} footer1={date} footer2={totaldailyreciept} /> </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaArchive />} headertitle='Amount Recieved' headerbody={monthlyamount} footer1={months[current.getMonth()]} footer2={totalmonthlyreciept} /> </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#ff9800' headericon={<FaIcons.FaChartLine />} headertitle='Amount Recieved' headerbody={yearlyamount} footer1={fyear} footer2={totalyearlyreciept} />  </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#00cae3' headericon={<FaIcons.FaChartBar />} headertitle='Total Registration Fee' headerbody={totalregfee} footer1={fyear} footer2={totalreg} />  </div>
             {/* <div className="cardwidget"><Cardwidget bgcolor='#ff9800' headericon='fa fa-th-large' headertitle='Total Cases' headerbody='+275' footer1='Male Cases - 3' footer2='Female Cases - 10' />  </div> */}
           </div>
           <div className="widgetcont">
@@ -167,7 +182,7 @@ const RecieptDashboard = () => {
 
             </div>
             <div className="chartwidget">
-              <Chartcontainer bgcolor='#4caf50' data={monthdata} headertitle='Total Amount' headerbody={yearlyamount} footer1={current.getFullYear()} footer2={totalyearlyreciept} listdata={["MonthlyAmount", "Total_Reciepts"]}  dkey="Month"/>
+              <Chartcontainer bgcolor='#4caf50' data={monthdata} headertitle='Total Amount' headerbody={yearlyamount} footer1={current.getFullYear()} footer2={totalyearlyreciept} listdata={["MonthlyAmount", "Total_Reciepts"]} dkey="Month" />
 
             </div>
             <div className="chartwidget">

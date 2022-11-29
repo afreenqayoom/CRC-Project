@@ -135,9 +135,9 @@ const RegistrationDashboard = () => {
         <div className="dashcont">
           <div className="widgetcont">
 
-            <div className="chartwidget"><Cardwidget bgcolor='#00cae3' headericon={<FaIcons.FaChartLine/>} headertitle='Total Cases' headerbody={todaytotal} footer1={date +' New Cases-' + todaynewcases} footer2={'Follow Up-' + todayfollowup} /> </div>
-            <div className="chartwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaArchive/>} headertitle='Total Cases' headerbody={monthtotal} footer1={months[current.getMonth()] + ' New Cases - ' + monthnewcases} footer2={'Follow Up - ' + monthfollowup} /> </div>
-            <div className="chartwidget"><Cardwidget bgcolor='#ff9800' headericon={<FaIcons.FaChartBar/>} headertitle='Total Cases' headerbody={yeartotal} footer1={fyear + '  New Cases-' + yearnewcases} footer2={'Follow Up-' + yearfollowup} />  </div>
+            <div className="chartwidget"><Cardwidget bgcolor='#00cae3' headericon={<FaIcons.FaChartLine/>} headertitle='Total Cases' headerbody={todaytotal} footer1={date} footer2={'New Cases - ' + todaynewcases} footer3={'Follow Up - ' + todayfollowup} /> </div>
+            <div className="chartwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaArchive/>} headertitle='Total Cases' headerbody={monthtotal} footer1={'Month - ' + months[current.getMonth()]} footer2={'New Cases - ' + monthnewcases} footer3={'Follow Up - ' + monthfollowup} /> </div>
+            <div className="chartwidget"><Cardwidget bgcolor='#ff9800' headericon={<FaIcons.FaChartBar/>} headertitle='Total Cases' headerbody={yeartotal} footer1={'Year - ' +fyear} footer2={'New Cases - ' + yearnewcases} footer3={'Follow Up - ' + yearfollowup} />  </div>
       
 
             </div>

@@ -73,7 +73,7 @@ const AdminDashboard = () => {
         setmonthlyamount('Rs. 0.00');
       else
         setmonthlyamount('Rs. ' + response.data[0].Charges.toFixed(2));
-      settotalmonthlyreciept('Total Reciepts-' + response.data[0].Total_Reciepts);
+      settotalmonthlyreciept('Total Reciepts - ' + response.data[0].Total_Reciepts);
     }).catch((error)=>{
       showToast(error.message,0);
       })
@@ -84,7 +84,7 @@ const AdminDashboard = () => {
         setyearlyamount('Rs. 0.00');
       else
         setyearlyamount('Rs. ' + response.data[0].Charges.toFixed(2));
-      settotalyearlyreciept('Total Reciepts-' + response.data[0].Total_Reciepts);
+      settotalyearlyreciept('Total Reciepts - ' + response.data[0].Total_Reciepts);
     }).catch((error)=>{
       showToast(error.message,0);
       })
@@ -123,10 +123,10 @@ const AdminDashboard = () => {
         <div className="dashcont">
           <div className="widgetcont">
 
-            <div className="cardwidget"><Cardwidget bgcolor='#00cae3' headericon= {<FaIcons.FaArchive/>} headertitle='Total Cases' headerbody={monthtotal} footer1={months[current.getMonth()] + ' New Cases-' + monthnewcases} footer2={'Follow Up-' + monthfollowup} /> </div>
-            <div className="cardwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaChartLine/>} headertitle='Total Cases' headerbody={yeartotal} footer1={fyear + '  New Cases-' + yearnewcases} footer2={'Follow Up-' + yearfollowup} />  </div>
-            <div className="cardwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaArchive/>} headertitle='Amount Recieved' headerbody={monthlyamount} footer1={months[current.getMonth()]} footer2={totalmonthlyreciept} /> </div>
-            <div className="cardwidget"><Cardwidget bgcolor='#fb8c00' headericon={<FaIcons.FaChartBar/>} headertitle='Amount Recieved' headerbody={yearlyamount} footer1={fyear} footer2={totalyearlyreciept} />  </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#00cae3' headericon= {<FaIcons.FaArchive/>} headertitle='Total Cases' headerbody={monthtotal} footer1={'Month - ' + months[current.getMonth()]} footer2={'New Cases - ' + monthnewcases} footer3={'Follow Up-' + monthfollowup} /> </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaChartLine/>} headertitle='Total Cases' headerbody={yeartotal} footer1={'Year - ' + fyear} footer2= {'New Cases - ' + yearnewcases} footer3={'Follow Up - ' + yearfollowup} />  </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#4caf50' headericon={<FaIcons.FaArchive/>} headertitle='Amount Recieved' headerbody={monthlyamount} footer1={'Month - ' + months[current.getMonth()]} footer2={totalmonthlyreciept} /> </div>
+            <div className="cardwidget"><Cardwidget bgcolor='#fb8c00' headericon={<FaIcons.FaChartBar/>} headertitle='Amount Recieved' headerbody={yearlyamount} footer1={'Year - ' + fyear} footer2={totalyearlyreciept} />  </div>
 
           </div>
           <div className="widgetcont">

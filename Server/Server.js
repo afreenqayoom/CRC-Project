@@ -17,6 +17,7 @@ const getphysiodash=require("./Routes/PhysiotherapyDashboard")
 const menu=require("./Routes/Menu")
 const patientreport=require("./Routes/Patientreport")
 app.use(express.json());
+app.options('*',cors());
 app.use(cors());
 app.use("/login",login);            
 app.use("/createuser",createuser);
@@ -33,7 +34,15 @@ app.use("/getregistrationdash",getregistrationdash);
 app.use("/getphysiodash",getphysiodash);
 app.use("/getmenu",menu);
 app.use("/patientreport",patientreport);
-app.listen(3001,err => {
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    res.status(statusCode).json({
+        success: 0,
+        message: err.message,
+        stack: err.stack
+    })
+})
+app.listen(3001,['192.168.1.100','localhost'],err => {
     if(err){
         return console.log("Error",err);
     }

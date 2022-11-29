@@ -314,9 +314,13 @@ const deleteTrow = (index) => {
 
       //this event is called to refresh page
       //formik.handleBlur(e);
-      console.log("phistory", phistory);
+    //  console.log("phistory", phistory);
     }).catch((error)=>{
-      showToast(error.message,0);
+      if(error.response)
+      showToast(error.response.data["message"],0);
+      else
+        showToast(error.message,0);
+
       })
     axios.post("getptype", {
       REG_ID: formik.values.regId,
@@ -353,7 +357,13 @@ const deleteTrow = (index) => {
       }
       
     }).catch((error)=>{
-      showToast(error.message,0);
+  
+      if(error.response)
+      showToast(error.response.data["message"],0);
+     
+      else
+        showToast(error.message,0);
+
       })
   }
   const [initialValues, setinitialValues] = useState({
@@ -513,7 +523,7 @@ const deleteTrow = (index) => {
                             value={diagnosisValue}
                             styles={customStyles}
                           />
-                          {console.log("sValue", diagnosisValue)}
+                          {/* {console.log("sValue", diagnosisValue)} */}
 
 
                         </div>

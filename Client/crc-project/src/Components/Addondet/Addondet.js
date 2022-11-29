@@ -336,35 +336,35 @@ export default function Addondet(props) {
                             </div>
                             {/* onclick event changed to onchange for testing */}
                             <div className="multi-select">
-                                 <label for="op1">
+                                 <label htmlFor="op1">
                                     <input type="checkbox" id="op1" name="disabilityParts" value="Left Lower Limb" onChange={handleDisabilityParts}/> Left Lower Limb</label>
-                                    <label for="op2">
+                                    <label htmlFor="op2">
                                     <input type="checkbox" id="op2" name="disabilityParts" value="Right Lower Limb" onChange={handleDisabilityParts}/> Right Lower Limb</label>
-                                    <label for="op3">
+                                    <label htmlFor="op3">
                                     <input type="checkbox" id="op3" name="disabilityParts" value="Both Lower Limbs" onChange={handleDisabilityParts}/> Both Lower Limbs</label>
-                                    <label for="op4">
+                                    <label htmlFor="op4">
                                     <input type="checkbox" id="op4" name="disabilityParts" value="Left Upper Limb" onChange={handleDisabilityParts}/> Left Upper Limb</label>
-                                    <label for="op5">
+                                    <label htmlFor="op5">
                                     <input type="checkbox" id="op5" name="disabilityParts" value="Right Upper Limb" onChange={handleDisabilityParts}/> Right Upper Limb</label>
-                                    <label for="op6">
+                                    <label htmlFor="op6">
                                     <input type="checkbox" id="op6" name="disabilityParts" value="Both Upper Limbs" onChange={handleDisabilityParts}/> Both Upper Limbs</label>
-                                    <label for="op7">
+                                    <label htmlFor="op7">
                                     <input type="checkbox" id="op7" name="disabilityParts" value="Trunk Weakness" onChange={handleDisabilityParts}/> Trunk Weakness</label>
-                                    <label for="op8">
+                                    <label htmlFor="op8">
                                     <input type="checkbox" id="op8" name="disabilityParts" value="Trunk Deformity" onChange={handleDisabilityParts}/> Trunk Deformity</label>
-                                    <label for="op9">
+                                    <label htmlFor="op9">
                                     <input type="checkbox" id="op9" name="disabilityParts" value="Left Eye" onChange={handleDisabilityParts}/> Left Eye</label>
-                                    <label for="op10">
+                                    <label htmlFor="op10">
                                     <input type="checkbox" id="op10" name="disabilityParts" value="Right Eye" onChange={handleDisabilityParts}/> Right Eye</label>
-                                    <label for="op11">
+                                    <label htmlFor="op11">
                                     <input type="checkbox" id="op11" name="disabilityParts" value="Both Eyes" onChange={handleDisabilityParts}/> Both Eyes</label>
-                                    <label for="op12">
+                                    <label htmlFor="op12">
                                     <input type="checkbox" id="op12" name="disabilityParts" value="Left Ear" onChange={handleDisabilityParts}/> Left Ear</label>
-                                    <label for="op13">
+                                    <label htmlFor="op13">
                                     <input type="checkbox" id="op13" name="disabilityParts" value="Right Ear" onChange={handleDisabilityParts}/> Right Ear</label>
-                                    <label for="op14">
+                                    <label htmlFor="op14">
                                     <input type="checkbox" id="op14" name="disabilityParts" value="Both Ears" onChange={handleDisabilityParts}/> Both Ears</label>
-                                    <label for="op15">
+                                    <label htmlFor="op15">
                                     <input type="checkbox" id="op15" name="disabilityParts" value="Mental Retardation" onChange={handleDisabilityParts}/> Mental Retardation</label>
                </div>
 
@@ -386,27 +386,27 @@ export default function Addondet(props) {
                                 <div className="overselect"></div>
                             </div>
                             <div className="multi-select" name="disabilityEffect">
-                                <label for="m1">
+                                <label htmlFor="m1">
                                     <input type="checkbox" id="m1" name="disability" value="Weak" onClick={handleDisability}/> Weak</label>
-                                <label for="m2">
+                                <label htmlFor="m2">
                                     <input type="checkbox" id="m2" name="disability" value="Deformed" onClick={handleDisability}/> Deformed</label>
-                                <label for="m3">
+                                <label htmlFor="m3">
                                     <input type="checkbox" id="m3" name="disability" value="Absence" onClick={handleDisability}/> Absence</label>
-                                <label for="m4">
+                                <label htmlFor="m4">
                                     <input type="checkbox" id="m4" name="disability" value="Amputated" onClick={handleDisability}/> Amputated</label>
-                                <label for="m5">
+                                <label htmlFor="m5">
                                     <input type="checkbox" id="m5" name="disability" value="Blind" onClick={handleDisability}/> Blind</label>
-                                <label for="m6">
+                                <label htmlFor="m6">
                                     <input type="checkbox" id="m6" name="disability" value="Low Vision" onClick={handleDisability}/> Low Vision</label>
-                                <label for="m7">
+                                <label htmlFor="m7">
                                     <input type="checkbox" id="m7" name="disability" value="Deaf" onClick={handleDisability}/> Deaf</label>
-                                <label for="m8">
+                                <label htmlFor="m8">
                                     <input type="checkbox" id="m8" name="disability" value="Speech Impairment" onClick={handleDisability}/> Speech Impairment</label>
-                                <label for="m9">
+                                <label htmlFor="m9">
                                     <input type="checkbox" id="m9" name="disability" value="Delayed Speech Development" onClick={handleDisability}/> Delayed Speech Development</label>
-                                <label for="m10">
+                                <label htmlFor="m10">
                                     <input type="checkbox" id="m10" name="disability" value="Hearing Impairment" onClick={handleDisability}/> Hearing Impairment</label>
-                                <label for="m11">
+                                <label htmlFor="m11">
                                     <input type="checkbox" id="m11" name="disability" value="Mentally Retarded" onClick={handleDisability}/> Mentally Retarded</label>
                             </div>
                         </div>
@@ -457,41 +457,41 @@ export default function Addondet(props) {
                 <div className="row">
 
                     <div className="checkboxes">
-                        <label for="one">
+                        <label htmlFor="one">
                             <input type="checkbox" id="one" name="rehab" value="Pension" onClick={handleClick}/> Pension</label>
-                        <label for="two">
+                        <label htmlFor="two">
                             <input type="checkbox" id="two" name="rehab" value="Lone from Bank" onClick={handleClick}/> Lone from Bank</label>
-                        <label for="three">
+                        <label htmlFor="three">
                             <input type="checkbox" id="three" name="rehab" value="Vocational Training" onClick={handleClick}/> Vocational Training</label>
-                        <label for="four">
+                        <label htmlFor="four">
                             <input type="checkbox" id="four" name="rehab" value="Help from Block" onClick={handleClick}/> Help from Block</label>
-                        <label for="five">
+                        <label htmlFor="five">
                             <input type="checkbox" id="five" name="rehab" value="Railway Concession" onClick={handleClick}/> Railway Concession</label>
-                        <label for="six">
+                        <label htmlFor="six">
                             <input type="checkbox" id="six" name="rehab" value="Bus Concession" onClick={handleClick}/> Bus Concession</label>
-                        <label for="seven">
+                        <label htmlFor="seven">
                             <input type="checkbox" id="seven" name="rehab" value="Reservation in Services" onClick={handleClick}/> Reservation in Services</label>
-                        <label for="eight">
+                        <label htmlFor="eight">
                             <input type="checkbox" id="eight" name="rehab" value="Handicapped Certificate" onClick={handleClick}/> Handicapped Certificate</label>
-                        <label for="nine">
+                        <label htmlFor="nine">
                             <input type="checkbox" id="nine" name="rehab" value="Scholarship" onClick={handleClick}/> Scholarship</label>
-                        <label for="ten">
+                        <label htmlFor="ten">
                             <input type="checkbox" id="ten" name="rehab" value="Crurch" onClick={handleClick}/> Crurch</label>
-                        <label for="eleven">
+                        <label htmlFor="eleven">
                             <input type="checkbox" id="eleven" name="rehab" value="Tri Wheeler" onClick={handleClick}/> Tri Wheeler</label>
-                        <label for="twelve">
+                        <label htmlFor="twelve">
                             <input type="checkbox" id="twelve" name="rehab" value="Wheel Chair" onClick={handleClick}/> Wheel Chair</label>
-                        <label for="thirteen">
+                        <label htmlFor="thirteen">
                             <input type="checkbox" id="thirteen" name="rehab" value="Caliper" onClick={handleClick}/> Caliper</label>
-                        <label for="fourteen">
+                        <label htmlFor="fourteen">
                             <input type="checkbox" id="fourteen" name="rehab" value="Artificial Limb" onClick={handleClick}/> Artificial Limb</label>
-                        <label for="fifteen">
+                        <label htmlFor="fifteen">
                             <input type="checkbox" id="fifteen" name="rehab" value="Hearing Aid" onClick={handleClick}/> Hearing Aid</label>
-                        <label for="sixteen">
+                        <label htmlFor="sixteen">
                             <input type="checkbox" id="sixteen" name="rehab" value="Blind Stick" onClick={handleClick}/> Blind Stick</label>
-                        <label for="seventeen">
+                        <label htmlFor="seventeen">
                             <input type="checkbox" id="seventeen" name="rehab" value="Special Education" onClick={handleClick}/> Special Education</label>
-                        <label for="eighteen">
+                        <label htmlFor="eighteen">
                             <input type="checkbox" id="eighteen" name="rehab" value="Integrated Education" onClick={handleClick}/> Integrated Education</label>
 
                     </div>

@@ -32,8 +32,19 @@ React.useEffect(()=>{
         console.log(mdata);
         console.log(localStorage.getItem('UT'))
     }).catch((error)=>{
-        toast.error(error.message, {
-          position: "top-center",autoClose: 2000});})
+        if (error.response){
+            toast.error(error.response.data["message"], {
+                position: "top-center", autoClose: 2000
+            });
+        }
+            
+            else{
+                toast.error(error.message, {
+                    position: "top-center", autoClose: 2000
+                });
+
+            }
+        })
 },[])
     return (
         <div style={{ minHeight: '100%', backgroundColor: 'black' }}>

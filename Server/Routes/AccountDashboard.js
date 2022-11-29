@@ -110,4 +110,21 @@ router.post("/getmonthpayment",(req,res)=>{
 
     })
 })
+router.post("/gettotalregfee", (req, res) => {
+    const YEARFLAG=req.body.YEARFLAG;
+    if(YEARFLAG)
+    DATEFROM=((current.getFullYear()-1)) + '-04-01';
+    else
+    DATEFROM=(current.getFullYear()) + '-04-01';
+    db.query("select sum(Registration_Fee) as TotalRegFee,count(Registration_ID) as TotalRegistrations from patient_transaction_detail where Dated BETWEEN ? and curdate()",[DATEFROM], (error, result) => {
+        if (error) {
+            res.send(error);
+        }
+        else {
+                res.send(result);
+        }
+
+    })
+
+})
 module.exports=router;

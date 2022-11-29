@@ -29,14 +29,22 @@ export default function Createuser() {
             USER_TYPE: formik.values.usertype,
             USER_ROLE:formik.values.roles
         }).then((response) => {
+            
             if (response.data === 0) {
-                showToast("UserID already available.",0);
+             showToast("UserID already available.",0);
                 }
             else if(response.data===1)
             showToast("User Successfully created!!",1);
+          
            
            
-        }).catch((error)=>{ showToast(error.message,0);})
+        }).catch((error)=>{ 
+            if (error.response)
+                showToast(error.response.data["message"], 0);
+
+            else
+                showToast(error.message, 0);
+        })
 
     };
     const [card1, showcard1] = useState(false);
@@ -216,17 +224,17 @@ export default function Createuser() {
                                 <div className="row">
 
                                     <div className="checkboxes">
-                                        <label for="one">
+                                        <label htmlfor="one">
                                             <input type="checkbox" id="role1" name="roles" value="Administration"/> Administration</label>
-                                        <label for="two">
+                                        <label htmlfor="two">
                                             <input type="checkbox" id="role2" name="roles" value="Registration"/> Registration</label>
-                                        <label for="three">
+                                        <label htmlfor="three">
                                         <input type="checkbox" id="role3" name="roles" value="Search"/> Search</label>
                                            
-                                        <label for="four">
+                                        <label htmlfor="four">
                                         <input type="checkbox" id="role4" name="roles" value="Accounts"/> Accounts</label>
                                           
-                                        <label for="five">
+                                        <label htmlfor="five">
                                         <input type="checkbox" id="role5" name="roles" value="Physiotherapy"/> Physiotherapy</label>
                                     </div>
                                 </div>

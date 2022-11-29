@@ -10,7 +10,7 @@ router.post("", (req, res) => {
         }
         else if(result.length>0)
         {        res.send(result);
-            console.log(result);
+            // console.log(result);
         }
         else
         res.send("0");

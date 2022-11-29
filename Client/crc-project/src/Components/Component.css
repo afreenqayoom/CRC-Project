@@ -7,6 +7,11 @@
 }
 .MuiPaper-root{
     display: grid !important;
+    min-width: 100%;
+}
+.MuiPaper-root input:focus{
+    border-color: none;
+    box-shadow: none;
 }
 .searchbox{
     /* border: 1px solid black; */

@@ -7,12 +7,15 @@ const handlePtype = (p, e) => {
     p.onChangeValue(e);
     p.setfollowup(false);
     if (e.target.value === 'Follow Up') {
+        p.value.regfee=0;
         p.clearregId();
         regID.disabled = "";
         regID.placeholder = "";
+       
 
     }
     else {
+        p.value.regfee=10;
         p.getregId();
         regID.disabled = "true";
     }
@@ -146,9 +149,9 @@ export default function Register(props) {
                 <label>Edit Details</label>
                 </div>
                 <div className="col-75">
-                <label class="switch">
+                <label className="switch">
                     <input type="checkbox" name="edit" onChange={e=>{handleEdit(props,e)}}/>
-                    <span class="slider round"></span>
+                    <span className="slider round"></span>
                 </label>
                 </div>
                 </div>
