@@ -48,7 +48,7 @@ export default function Layout() {
                             {/* <i className="fa fa-bars" aria-hidden="true"></i> */}
                         </span>
                     </div>
-                    <span className="app-title">Composited Regional Centre Srinagar</span>
+                    <span className="app-title">Composite Regional Centre Srinagar</span>
                 </div>
           
 
